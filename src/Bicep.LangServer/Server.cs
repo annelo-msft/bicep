@@ -100,6 +100,7 @@ namespace Bicep.LanguageServer
             // without manually constructing up the graph
             services.AddSingleton<IResourceTypeProvider>(services => creationOptions.ResourceTypeProvider ?? AzResourceTypeProvider.CreateWithAzTypes());
             services.AddSingleton<ISnippetsProvider>(services => creationOptions.SnippetsProvider ?? new SnippetsProvider(fileResolver));
+            services.AddSingleton<IBicepConfigChangeHandler>(services => creationOptions.BicepConfigChangeHandler ?? new BicepConfigChangeHandler(fileResolver));
             services.AddSingleton<IFileResolver>(services => fileResolver);
             services.AddSingleton<IFeatureProvider>(services => creationOptions.Features ?? new FeatureProvider());
             services.AddSingleton<IModuleRegistryProvider, DefaultModuleRegistryProvider>();
@@ -111,6 +112,7 @@ namespace Bicep.LanguageServer
             services.AddSingleton<ICompilationProvider, BicepCompilationProvider>();
             services.AddSingleton<ISymbolResolver, BicepSymbolResolver>();
             services.AddSingleton<ICompletionProvider, BicepCompletionProvider>();
+            services.AddSingleton<IModuleRestoreScheduler, ModuleRestoreScheduler>();
             services.AddSingleton<IModuleRestoreScheduler, ModuleRestoreScheduler>();
         }
     }
