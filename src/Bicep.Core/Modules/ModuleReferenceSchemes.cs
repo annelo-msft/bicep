@@ -6,5 +6,7 @@ namespace Bicep.Core.Modules
     public static class ModuleReferenceSchemes
     {
         public const string Local = "";
+
+        public const string TemplateSpecs = "ts";
     }
 }

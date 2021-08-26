@@ -1141,6 +1141,11 @@ namespace Bicep.Core.Diagnostics
                 TextSpan,
                 "BCP192",
                 $"Unable to restore the module with reference \"{moduleRef}\": {message}");
+
+            public ErrorDiagnostic InvalidTemplateSpecReference(string invalidReference) => new(
+                TextSpan,
+                "BCP193",
+                $"The specified template spec reference \"{invalidReference}\" is not valid. Specify a reference in the format of \"ts:<resourceGroupName>/<templateSpecName>:<tag>\" or \"ts:<subscriptionId>/<resourceGroupName>/<templateSpecName>:<tag>\".");
         }
 
         public static DiagnosticBuilderInternal ForPosition(TextSpan span)
